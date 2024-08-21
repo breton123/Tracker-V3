@@ -1,0 +1,97 @@
+All hosted on firebase
+Design everything first in figma
+Then create it component at a time
+Start mobile first
+
+Running terminals on the webapp
+https://metaapi.cloud/#pricing
+Use metaapi
+
+-   already allows creating live and demo accounts
+-   allows trading
+-   does everything controller currently does
+-   saves trade history for you
+-   includes risk management
+    Just need to figure out how it can use experts
+
+If not use a docker hosting service
+Install new terminals and have a docker container per user - use something like aws for this
+Then have script similar to controller
+
+For backtests and optimizations you can use mql cloud service
+
+tables
+
+Users
+
+-   username (32 bytes) up to 31 letters
+-   email (64 bytes) up to 63 letters
+-   password (128 bytes) up to 127 letters
+-   type (10 bytes) up to 9 letters
+
+234 bytes per user
+
+Account - Under User
+
+-   login (32 bytes) up to 31 letters
+-   password (32 bytes) up to 31 letters
+-   name (32 bytes) up to 31 letters
+-   server (32 bytes) up to 31 letters
+-   deposit (32 bytes) up to 31 letters
+-   enabled (7 bytes) up to 6 letters
+
+135 bytes per Account
+
+Set - Under Account
+
+-   magic (32 bytes) up to 31 letters
+-   name (64 bytes) up to 63 letters
+-   strategy (256 bytes) up to 255 letters
+-   profit (32 bytes) up to 31 letters
+-   maxDrawdown (32 bytes) up to 31 letters
+-   profitFactor (32 bytes) up to 31 letters
+-   returnOnDrawdown (32 bytes) up to 31 letters
+-   minLotSize (32 bytes) up to 31 letters
+-   maxLotSize (32 bytes) up to 31 letters
+-   avgLotSize (32 bytes) up to 31 letters
+-   wins (32 bytes) up to 31 letters
+-   losses (32 bytes) up to 31 letters
+-   winRate (32 bytes) up to 31 letters
+-   minTradeTime (32 bytes) up to 31 letters
+-   maxTradeTime (32 bytes) up to 31 letters
+-   avgTradeTime (32 bytes) up to 31 letters
+-   trades (32 bytes) up to 31 letters
+-   created at (32 bytes) up to 31 letters
+-   updated at (32 bytes) up to 31 letters
+
+864 bytes per set
+
+Snapshot - Under Set
+
+-   time (32 bytes) up to 31 letters
+-   profit (13 bytes) up to 12 letters
+-   maxDrawdown (13 bytes) up to 12 letters
+-   profitFactor (13 bytes) up to 12 letters
+-   returnOnDrawdown (13 bytes) up to 12 letters
+-   wins (13 bytes) up to 12 letters
+-   losses (13 bytes) up to 12 letters
+-   avgTradeTime (32 bytes) up to 31 letters
+-   openProfit (13 bytes) up to 12 letters
+-   openDrawdown (13 bytes) up to 12 letters
+
+168 bytes per snapshot
+
+Trades - Under Set
+
+-   tradeID (32 bytes) up to 31 letters
+-   profit (32 bytes) up to 31 letters
+-   volume (32 bytes) up to 31 letters
+-   symbol (32 bytes) up to 31 letters
+-   direction (32 bytes) up to 31 letters
+-   entryTime (32 bytes) up to 31 letters
+-   exitTime (32 bytes) up to 31 letters
+-   holdTime (32 bytes) up to 31 letters
+-   entryPrice (32 bytes) up to 31 letters
+-   exitPrice (32 bytes) up to 31 letters
+
+320 bytes per trades

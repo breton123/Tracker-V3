@@ -1,0 +1,48 @@
+PostgreSQL Setup
+
+1. Install PostgreSQL 16.4 ## Windows https://sbp.enterprisedb.com/getfile.jsp?fileid=1259129
+2. Open pgAdmin and connect to local PostgreSQL server
+3. Create a new database
+4. Create new user
+
+Hasura Setup
+5. Install Docker ## Windows https://docs.docker.com/desktop/install/windows-install/
+6. Create new dir for Hasura # e.g C:\Hasura
+7. Create a 'docker-compose.yml' file with this
+
+################################################################
+services:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: server
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  hasura:
+    image: hasura/graphql-engine:v2.0.10
+    ports:
+      - "8321:8080"
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://admin:admin@postgres:5432/server
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true"  # Enable Hasura Console
+    depends_on:
+      - postgres
+volumes:
+  pgdata:
+
+restart: always
+
+################################################################
+
+8. Run launchDB.bat
+9. Open hasura console with http://localhost:8321/console
+10. Setup tables in tables.txt
+FastAPI Setup
+10. Run launchAPI.bat and add to startup
